@@ -1,0 +1,6 @@
+CRITICAL - 2022-10-12 22:52:35 --> Too few arguments to function App\Controllers\Objek::Edit(), 0 passed in C:\xampp\htdocs\semester5\petalokasiobjek\system\CodeIgniter.php on line 904 and exactly 1 expected
+in APPPATH\Controllers\Objek.php on line 62.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Objek->Edit()
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Objek))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

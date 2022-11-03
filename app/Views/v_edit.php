@@ -25,33 +25,48 @@
                 <h2>EDIT DATA</h2>
             </div>
             <div class="card-body">
-                <form action="<?= base_url('objek/simpantambahdata') ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?= base_url('objek/simpaneditdata/' . $objek['id']) ?>" method="POST" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="input_nama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="input_nama" name="input_nama" placeholder="Isikan nama objek" value="<?= $objek['nama'] ?>">
+                        <input type="text" class="form-control text-primary" id="input_nama" name="input_nama" placeholder="Isikan nama objek" value="<?= $objek['nama'] ?>">
                     </div>
                     <div class="mb-3">
                         <label for="input_deskripsi" class="form-label">Deskripsi</label>
-                        <textarea class="form-control" id="input_deskripsi" name="input_deskripsi" rows="3"><?= $objek['deskripsi'] ?></textarea>
+                        <textarea class="form-control text-primary" id="input_deskripsi" name="input_deskripsi" rows="3"><?= $objek['deskripsi'] ?></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="input_longitude" class="form-label">Longitude</label>
-                        <input type="text" class="form-control" id="input_longitude" name="input_longitude" placeholder="Isikan longitude" value="<?= $objek['longitude'] ?>">
+                        <input type="text" class="form-control text-primary" id="input_longitude" name="input_longitude" placeholder="Isikan longitude" value="<?= $objek['longitude'] ?>">
                     </div>
                     <div class="mb-3">
                         <label for="input_latitude" class="form-label">Latitude</label>
-                        <input type="text" class="form-control" id="input_latitude" name="input_latitude" placeholder="Isikan latitude" value="<?= $objek['latitude'] ?>">
+                        <input type="text" class="form-control text-primary" id="input_latitude" name="input_latitude" placeholder="Isikan latitude" value="<?= $objek['latitude'] ?>">
                     </div>
 
                     <div id="map"></div>
 
-                    <div class="mb-3">
-                        <label for="input_foto" class="form-label">Foto</label>
-                        <input type="file" class="form-control" id="input_foto" name="input_foto">
+                    <div class="my-3 row">
+                        <div class="col-3">
+                            <img src="<?= base_url('img/objek/' . $objek['foto']) ?>" alt="Tidak ada mie" width="250px" height="250px">
+                        </div>
+                        <div class="col">
+                            <label for="input_foto" class="form-label">Foto</label>
+                            <input type="file" class="form-control" id="input_foto" name="input_foto">
+
+                            <input type="text" name="input_foto_lama" value="<?= $objek['foto'] ?>">
+
+                        </div>
                     </div>
-                    <div class="mb-3 d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary">SIMPAN</button>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col mb-3 d-flex justify-content-start">
+                            <a href="<?= base_url('objek/table') ?>" class="btn btn-secondary">BATAL</a>
+                        </div>
+                        <div class="col mb-3 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary ms-auto">Simpan</button>
+                        </div>
                     </div>
                 </form>
             </div>

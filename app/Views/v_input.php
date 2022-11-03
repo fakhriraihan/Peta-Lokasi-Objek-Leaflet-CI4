@@ -29,7 +29,11 @@
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="input_nama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="input_nama" name="input_nama" placeholder="Isikan nama objek">
+                        <input type="text" class="form-control <?= ($validation->hasError('input_nama')) ? 'is-invalid' : '' ?>" id="input_nama" name="input_nama" placeholder="Isikan nama objek" value="<?= set_value('input_nama') ?>">
+
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('input_nama'); ?>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="input_deskripsi" class="form-label">Deskripsi</label>
@@ -37,18 +41,30 @@
                     </div>
                     <div class="mb-3">
                         <label for="input_longitude" class="form-label">Longitude</label>
-                        <input type="text" class="form-control" id="input_longitude" name="input_longitude" placeholder="Isikan longitude">
+                        <input type="text" class="form-control <?= ($validation->hasError('input_longitude')) ? 'is-invalid' : '' ?>" id="input_longitude" name="input_longitude" placeholder="Isikan longitude" value="<?= set_value('input_longitude') ?>">
+
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('input_longitude'); ?>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="input_latitude" class="form-label">Latitude</label>
-                        <input type="text" class="form-control" id="input_latitude" name="input_latitude" placeholder="Isikan latitude">
+                        <input type="text" class="form-control <?= ($validation->hasError('input_latitude')) ? 'is-invalid' : '' ?>" id="input_latitude" name="input_latitude" placeholder="Isikan latitude" value="<?= set_value('input_latitude') ?>">
+
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('input_latitude'); ?>
+                        </div>
                     </div>
 
                     <div id="map"></div>
 
                     <div class="mb-3">
                         <label for="input_foto" class="form-label">Foto</label>
-                        <input type="file" class="form-control" id="input_foto" name="input_foto">
+                        <input type="file" class="form-control <?= ($validation->hasError('input_foto')) ? 'is-invalid' : '' ?>" id="input_foto" name="input_foto">
+
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('input_foto'); ?>
+                        </div>
                     </div>
                     <div class="mb-3 d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary">SIMPAN</button>

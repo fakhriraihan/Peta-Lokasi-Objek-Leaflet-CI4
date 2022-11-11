@@ -9,19 +9,56 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.min.css" integrity="sha512-oIQ0EBio8LJupRpgmDsIsvm0Fsr6c3XNHLB7at5xb+Cf6eQuCX9xuX8XXGRIcokNgdqL1ms7nqbQ6ryXMGxXpg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         #map {
             height: 400px;
             width: 100%;
         }
+
+        .container {
+            margin-top: 100px;
+        }
     </style>
 </head>
 
 <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-map-marker-alt"></i> Peta Lokasi Objek</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+
+                    <?php if (auth()->loggedIn()) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= base_url('objek/table') ?>"><i class="fas fa-table"></i> Tabel Data</a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if (auth()->loggedIn()) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= base_url() ?>"><i class="fas fa-map-marker-alt"></i> Peta</a>
+                        </li>
+                    <?php endif; ?>
+
+                    <li class="nav-item">
+                        <a class="nav-link <?= auth()->loggedIn() ? 'text-danger' : "" ?>" href="<?= auth()->loggedIn() ? base_url('logout') : base_url('login') ?>">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <?= auth()->loggedIn() ? 'Logout' : 'Login' ?>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header text-center">
                 <h2>INPUT DATA</h2>
             </div>
             <div class="card-body">

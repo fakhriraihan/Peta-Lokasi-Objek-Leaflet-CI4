@@ -12,9 +12,16 @@ use Faker\Provider\Base;
 
     <title>Peta Lokasi Objek</title>
 
+    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-draw@1.0.4/dist/leaflet.draw.css">
+
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <!-- Tab browser icon -->
     <link rel="icon" type="image/x-icon" href="https://awsimages.detik.net.id/community/media/visual/2017/10/24/cdbcb323-422c-4335-af51-8382ebdcf787.png?w=700&q=90">
@@ -39,8 +46,18 @@ use Faker\Provider\Base;
 </head>
 
 <body>
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-draw@1.0.4/dist/leaflet.draw.min.js"></script>
+
+    <!-- Terraformer -->
+    <script src="https://cdn.jsdelivr.net/npm/terraformer@1.0.12/terraformer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/terraformer-wkt-parser@1.2.1/terraformer-wkt-parser.min.js"></script>
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
     <!-- NAVBAR -->
@@ -99,6 +116,90 @@ use Faker\Provider\Base;
             </div>
         </div>
     </div>
+
+    <!-- Modal Point -->
+    <div class="modal fade" id="pointModal" tabindex="-1" aria-labelledby="pointModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="pointModalLabel"><i class="fas fa-info-circle"></i> Point</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= base_url('leafletdraw/simpan_point') ?>" method="POST">
+                        <?= csrf_field() ?>
+
+                        <label for="input_point_name">Nama</label>
+                        <input type="text" class="form-control" id="input_point_name" name="input_point_name">
+
+                        <label for="input_point_geometry">Geometry</label>
+                        <textarea class="form-control" id="input_point_geometry" name="input_point_geometry" rows="2"></textarea>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary" id="btn_save_point">Simpan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Polyline -->
+    <div class="modal fade" id="polylineModal" tabindex="-1" aria-labelledby="polylineModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="polylineModalLabel"><i class="fas fa-info-circle"></i> Polyline</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= base_url('leafletdraw/simpan_polyline') ?>" method="POST">
+                        <?= csrf_field() ?>
+
+                        <label for="input_polyline_name">Nama</label>
+                        <input type="text" class="form-control" id="input_polyline_name" name="input_polyline_name">
+
+                        <label for="input_polyline_geometry">Geometry</label>
+                        <textarea class="form-control" id="input_polyline_geometry" name="input_polyline_geometry" rows="2"></textarea>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary" id="btn_save_polyline">Simpan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Polygon -->
+    <div class="modal fade" id="polygonModal" tabindex="-1" aria-labelledby="polygonModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="polygonModalLabel"><i class="fas fa-info-circle"></i> Polygon</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= base_url('leafletdraw/simpan_polygon') ?>" method="POST">
+                        <?= csrf_field() ?>
+
+                        <label for="input_polygon_name">Nama</label>
+                        <input type="text" class="form-control" id="input_polygon_name" name="input_polygon_name">
+
+                        <label for="input_polygon_geometry">Geometry</label>
+                        <textarea class="form-control" id="input_polygon_geometry" name="input_polygon_geometry" rows="2"></textarea>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary" id="btn_save_polygon">Simpan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 <script>
@@ -124,46 +225,57 @@ use Faker\Provider\Base;
     });
     basemap4.addTo(map);
 
-    /* GeoJSON Point */
-    $.getJSON("<?= base_url('Api') ?>", function(data) {
-        geojson.addData(data);
-        map.addLayer(geojson);
-        map.fitBounds(geojson.getBounds());
+    // Draw items
+    var drawnItems = new L.FeatureGroup();
+    map.addLayer(drawnItems);
+    console.log(drawnItems);
+
+    // Draw Control
+    var drawControl = new L.Control.Draw({
+        draw: {
+            polygon: true,
+            marker: true,
+            polyline: true,
+            circle: false,
+            circlemarker: false,
+            rectangle: false,
+        },
     });
 
-    var geojson = L.geoJson(null, {
-        pointToLayer: function(feature, latlng) {
-            return L.marker(latlng, {
-                icon: L.icon({
-                    iconUrl: "<?= base_url('/img/marker.png') ?>",
-                    iconSize: [30, 30],
-                    iconAnchor: [15, 30],
-                    popupAnchor: [0, -30],
-                }),
-            });
-        },
-        onEachFeature: function(feature, layer) {
-            /* Variabel content untuk memanggil atribut dari data file geojson */
-            var content = "Nama : " + feature.properties.nama + "<br>" +
-                "Deskripsi : " + feature.properties.deskripsi + "<br>" +
-                "<img src='<?= base_url('/img/objek') ?>" + "/" + feature.properties.foto + "' width='100px' height='100px'>";
+    map.addControl(drawControl);
 
-            layer.on({
-                click: function(e) { //Fungsi ketika icon simbol di-klik
-                    geojson.bindPopup(content);
-                },
+    /* Draw Event */
+    map.on(L.Draw.Event.CREATED, function(e) {
+        var type = e.layerType,
+            layer = e.layer;
 
-                mouseover: function(e) {
-                    geojson.bindTooltip(feature.properties.nama, {
-                        sticky: true
-                    });
-                },
+        // Convert geometry to GeoJSON
+        var drawnItemJSON = layer.toGeoJSON().geometry;
 
-                mouseout: function(e) {
-                    geojson.closePopup();
-                }
-            });
-        },
+        // Convert GeoJSON to WKT
+        var drawnItemWKT = Terraformer.WKT.convert(drawnItemJSON);
+
+        if (type === 'marker') {
+            // Set value to point
+            $('#input_point_geometry').html(drawnItemWKT);
+
+            // Open Modal
+            $('#pointModal').modal('show');
+        } else if (type === 'polyline') {
+            // Set value to point
+            $('#input_polyline_geometry').html(drawnItemWKT);
+
+            // Open Modal
+            $('#polylineModal').modal('show');
+        } else if (type === 'polygon') {
+            // Set value to point
+            $('#input_polygon_geometry').html(drawnItemWKT);
+
+            // Open Modal
+            $('#polygonModal').modal('show');
+        }
+
+        map.addLayer(layer);
     });
 
     /* Control Layer */
@@ -174,11 +286,7 @@ use Faker\Provider\Base;
         "Stadia Dark Mode": basemap4
     };
 
-    var overlayMaps = {
-        "Objek": geojson
-    };
-
-    L.control.layers(baseMaps, overlayMaps, {
+    L.control.layers(baseMaps, null, {
         collapsed: false
     }).addTo(map);
 

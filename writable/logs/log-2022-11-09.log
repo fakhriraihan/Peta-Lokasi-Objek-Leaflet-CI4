@@ -1,0 +1,203 @@
+ERROR - 2022-11-09 21:50:52 --> ErrorException: pg_query(): Query failed: ERROR:  relation "tbl_data_polygon" already exists in C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\Postgre\Connection.php:140
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Que...', 'C:\\xampp\\htdocs...', 140)
+#1 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\Postgre\Connection.php(140): pg_query(Object(PgSql\Connection), 'CREATE TABLE "t...')
+#2 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\BaseConnection.php(693): CodeIgniter\Database\Postgre\Connection->execute('CREATE TABLE "t...')
+#3 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE "t...')
+#4 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\Forge.php(509): CodeIgniter\Database\BaseConnection->query('CREATE TABLE "t...')
+#5 C:\xampp\htdocs\semester5\petalokasiobjek\app\Database\Migrations\2022-11-10-030732_TabelDataPolygon.php(48): CodeIgniter\Database\Forge->createTable('tbl_data_polygo...')
+#6 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\MigrationRunner.php(868): App\Database\Migrations\TabelDataPolygon->up()
+#7 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\MigrationRunner.php(187): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#8 C:\xampp\htdocs\semester5\petalokasiobjek\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#9 C:\xampp\htdocs\semester5\petalokasiobjek\system\CLI\Commands.php(63): CodeIgniter\Commands\Database\Migrate->run(Array)
+#10 C:\xampp\htdocs\semester5\petalokasiobjek\system\CLI\CommandRunner.php(65): CodeIgniter\CLI\Commands->run('migrate', Array)
+#11 C:\xampp\htdocs\semester5\petalokasiobjek\system\CLI\CommandRunner.php(51): CodeIgniter\CLI\CommandRunner->index(Array)
+#12 C:\xampp\htdocs\semester5\petalokasiobjek\system\CodeIgniter.php(897): CodeIgniter\CLI\CommandRunner->_remap('index', Array)
+#13 C:\xampp\htdocs\semester5\petalokasiobjek\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(CodeIgniter\CLI\CommandRunner))
+#14 C:\xampp\htdocs\semester5\petalokasiobjek\system\CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\semester5\petalokasiobjek\system\CLI\Console.php(48): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\semester5\petalokasiobjek\spark(98): CodeIgniter\CLI\Console->run()
+#17 {main}
+ERROR - 2022-11-09 21:51:53 --> ErrorException: pg_query(): Query failed: ERROR:  relation "tbl_data_polygon" already exists in C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\Postgre\Connection.php:140
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Que...', 'C:\\xampp\\htdocs...', 140)
+#1 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\Postgre\Connection.php(140): pg_query(Object(PgSql\Connection), 'CREATE TABLE "t...')
+#2 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\BaseConnection.php(693): CodeIgniter\Database\Postgre\Connection->execute('CREATE TABLE "t...')
+#3 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE "t...')
+#4 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\Forge.php(509): CodeIgniter\Database\BaseConnection->query('CREATE TABLE "t...')
+#5 C:\xampp\htdocs\semester5\petalokasiobjek\app\Database\Migrations\2022-11-10-030732_TabelDataPolygon.php(48): CodeIgniter\Database\Forge->createTable('tbl_data_polygo...')
+#6 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\MigrationRunner.php(868): App\Database\Migrations\TabelDataPolygon->up()
+#7 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\MigrationRunner.php(187): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#8 C:\xampp\htdocs\semester5\petalokasiobjek\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#9 C:\xampp\htdocs\semester5\petalokasiobjek\system\CLI\Commands.php(63): CodeIgniter\Commands\Database\Migrate->run(Array)
+#10 C:\xampp\htdocs\semester5\petalokasiobjek\system\CLI\CommandRunner.php(65): CodeIgniter\CLI\Commands->run('migrate', Array)
+#11 C:\xampp\htdocs\semester5\petalokasiobjek\system\CLI\CommandRunner.php(51): CodeIgniter\CLI\CommandRunner->index(Array)
+#12 C:\xampp\htdocs\semester5\petalokasiobjek\system\CodeIgniter.php(897): CodeIgniter\CLI\CommandRunner->_remap('index', Array)
+#13 C:\xampp\htdocs\semester5\petalokasiobjek\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(CodeIgniter\CLI\CommandRunner))
+#14 C:\xampp\htdocs\semester5\petalokasiobjek\system\CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#15 C:\xampp\htdocs\semester5\petalokasiobjek\system\CLI\Console.php(48): CodeIgniter\CodeIgniter->run()
+#16 C:\xampp\htdocs\semester5\petalokasiobjek\spark(98): CodeIgniter\CLI\Console->run()
+#17 {main}
+CRITICAL - 2022-11-09 22:01:01 --> Undefined property: App\Controllers\Leafletdraw::$TbldatapolygonModel
+in APPPATH\Controllers\Leafletdraw.php on line 53.
+ 1 APPPATH\Controllers\Leafletdraw.php(53): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Leafletdraw::$TbldatapolygonModel', 'APPPATH\\Controllers\\Leafletdraw.php', 53)
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Leafletdraw->simpan_polygon()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Leafletdraw))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-11-09 22:02:08 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;tbl_data_polygons&quot; does not exist
+LINE 1: INSERT INTO &quot;tbl_data_polygons&quot; (&quot;nama&quot;, &quot;geom&quot;) VALUES ('po...
+                    ^ in C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\Postgre\Connection.php:140
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Que...', 'C:\\xampp\\htdocs...', 140)
+#1 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\Postgre\Connection.php(140): pg_query(Object(PgSql\Connection), 'INSERT INTO "tb...')
+#2 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\BaseConnection.php(693): CodeIgniter\Database\Postgre\Connection->execute('INSERT INTO "tb...')
+#3 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO "tb...')
+#4 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO "tb...', Array, false)
+#5 C:\xampp\htdocs\semester5\petalokasiobjek\system\Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+#6 C:\xampp\htdocs\semester5\petalokasiobjek\system\BaseModel.php(738): CodeIgniter\Model->doInsert(Array)
+#7 C:\xampp\htdocs\semester5\petalokasiobjek\system\Model.php(667): CodeIgniter\BaseModel->insert(Array, false)
+#8 C:\xampp\htdocs\semester5\petalokasiobjek\system\BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#9 C:\xampp\htdocs\semester5\petalokasiobjek\app\Controllers\Leafletdraw.php(55): CodeIgniter\BaseModel->save(Array)
+#10 C:\xampp\htdocs\semester5\petalokasiobjek\system\CodeIgniter.php(904): App\Controllers\Leafletdraw->simpan_polygon()
+#11 C:\xampp\htdocs\semester5\petalokasiobjek\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Leafletdraw))
+#12 C:\xampp\htdocs\semester5\petalokasiobjek\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 C:\xampp\htdocs\semester5\petalokasiobjek\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2022-11-09 22:02:08 --> pg_query(): Query failed: ERROR:  relation &quot;tbl_data_polygons&quot; does not exist
+LINE 1: INSERT INTO &quot;tbl_data_polygons&quot; (&quot;nama&quot;, &quot;geom&quot;) VALUES ('po...
+                    ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 140.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Query failed: ERROR:  relation &quot;tbl_data_polygons&quot; does not exist
+LINE 1: INSERT INTO &quot;tbl_data_polygons&quot; (&quot;nama&quot;, &quot;geom&quot;) VALUES (\'po...
+                    ^', 'SYSTEMPATH\\Database\\Postgre\\Connection.php', 140)
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(140): pg_query(Object(PgSql\Connection), 'INSERT INTO "tbl_data_polygons" ("nama", "geom") VALUES (\'poligon jogja\', \'POLYGON ((110.340966 -7.738382, 110.419204 -7.765613, 110.39587 -7.8296, 110.321758 -7.810541, 110.340966 -7.738382))\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\Postgre\Connection->execute('INSERT INTO "tbl_data_polygons" ("nama", "geom") VALUES (\'poligon jogja\', \'POLYGON ((110.340966 -7.738382, 110.419204 -7.765613, 110.39587 -7.8296, 110.321758 -7.810541, 110.340966 -7.738382))\')')
+ 4 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO "tbl_data_polygons" ("nama", "geom") VALUES (\'poligon jogja\', \'POLYGON ((110.340966 -7.738382, 110.419204 -7.765613, 110.39587 -7.8296, 110.321758 -7.810541, 110.340966 -7.738382))\')')
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO "tbl_data_polygons" ("nama", "geom") VALUES (:nama:, :geom:)', [...], false)
+ 6 SYSTEMPATH\Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+ 7 SYSTEMPATH\BaseModel.php(738): CodeIgniter\Model->doInsert([...])
+ 8 SYSTEMPATH\Model.php(667): CodeIgniter\BaseModel->insert([...], false)
+ 9 SYSTEMPATH\BaseModel.php(658): CodeIgniter\Model->insert([...], false)
+10 APPPATH\Controllers\Leafletdraw.php(55): CodeIgniter\BaseModel->save([...])
+11 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Leafletdraw->simpan_polygon()
+12 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Leafletdraw))
+13 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-11-09 22:04:06 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;tbl_data_points&quot; does not exist
+LINE 1: INSERT INTO &quot;tbl_data_points&quot; (&quot;nama&quot;, &quot;geom&quot;) VALUES ('jogj...
+                    ^ in C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\Postgre\Connection.php:140
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Que...', 'C:\\xampp\\htdocs...', 140)
+#1 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\Postgre\Connection.php(140): pg_query(Object(PgSql\Connection), 'INSERT INTO "tb...')
+#2 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\BaseConnection.php(693): CodeIgniter\Database\Postgre\Connection->execute('INSERT INTO "tb...')
+#3 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO "tb...')
+#4 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO "tb...', Array, false)
+#5 C:\xampp\htdocs\semester5\petalokasiobjek\system\Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+#6 C:\xampp\htdocs\semester5\petalokasiobjek\system\BaseModel.php(738): CodeIgniter\Model->doInsert(Array)
+#7 C:\xampp\htdocs\semester5\petalokasiobjek\system\Model.php(667): CodeIgniter\BaseModel->insert(Array, false)
+#8 C:\xampp\htdocs\semester5\petalokasiobjek\system\BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#9 C:\xampp\htdocs\semester5\petalokasiobjek\app\Controllers\Leafletdraw.php(33): CodeIgniter\BaseModel->save(Array)
+#10 C:\xampp\htdocs\semester5\petalokasiobjek\system\CodeIgniter.php(904): App\Controllers\Leafletdraw->simpan_point()
+#11 C:\xampp\htdocs\semester5\petalokasiobjek\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Leafletdraw))
+#12 C:\xampp\htdocs\semester5\petalokasiobjek\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 C:\xampp\htdocs\semester5\petalokasiobjek\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2022-11-09 22:04:06 --> pg_query(): Query failed: ERROR:  relation &quot;tbl_data_points&quot; does not exist
+LINE 1: INSERT INTO &quot;tbl_data_points&quot; (&quot;nama&quot;, &quot;geom&quot;) VALUES ('jogj...
+                    ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 140.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Query failed: ERROR:  relation &quot;tbl_data_points&quot; does not exist
+LINE 1: INSERT INTO &quot;tbl_data_points&quot; (&quot;nama&quot;, &quot;geom&quot;) VALUES (\'jogj...
+                    ^', 'SYSTEMPATH\\Database\\Postgre\\Connection.php', 140)
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(140): pg_query(Object(PgSql\Connection), 'INSERT INTO "tbl_data_points" ("nama", "geom") VALUES (\'jogja\', \'POINT (110.206813 -7.738382)\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\Postgre\Connection->execute('INSERT INTO "tbl_data_points" ("nama", "geom") VALUES (\'jogja\', \'POINT (110.206813 -7.738382)\')')
+ 4 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO "tbl_data_points" ("nama", "geom") VALUES (\'jogja\', \'POINT (110.206813 -7.738382)\')')
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO "tbl_data_points" ("nama", "geom") VALUES (:nama:, :geom:)', [...], false)
+ 6 SYSTEMPATH\Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+ 7 SYSTEMPATH\BaseModel.php(738): CodeIgniter\Model->doInsert([...])
+ 8 SYSTEMPATH\Model.php(667): CodeIgniter\BaseModel->insert([...], false)
+ 9 SYSTEMPATH\BaseModel.php(658): CodeIgniter\Model->insert([...], false)
+10 APPPATH\Controllers\Leafletdraw.php(33): CodeIgniter\BaseModel->save([...])
+11 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Leafletdraw->simpan_point()
+12 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Leafletdraw))
+13 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-11-09 22:04:53 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;tbl_data_points&quot; does not exist
+LINE 1: INSERT INTO &quot;tbl_data_points&quot; (&quot;nama&quot;, &quot;geom&quot;) VALUES ('jogj...
+                    ^ in C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\Postgre\Connection.php:140
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Que...', 'C:\\xampp\\htdocs...', 140)
+#1 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\Postgre\Connection.php(140): pg_query(Object(PgSql\Connection), 'INSERT INTO "tb...')
+#2 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\BaseConnection.php(693): CodeIgniter\Database\Postgre\Connection->execute('INSERT INTO "tb...')
+#3 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO "tb...')
+#4 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO "tb...', Array, false)
+#5 C:\xampp\htdocs\semester5\petalokasiobjek\system\Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+#6 C:\xampp\htdocs\semester5\petalokasiobjek\system\BaseModel.php(738): CodeIgniter\Model->doInsert(Array)
+#7 C:\xampp\htdocs\semester5\petalokasiobjek\system\Model.php(667): CodeIgniter\BaseModel->insert(Array, false)
+#8 C:\xampp\htdocs\semester5\petalokasiobjek\system\BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#9 C:\xampp\htdocs\semester5\petalokasiobjek\app\Controllers\Leafletdraw.php(33): CodeIgniter\BaseModel->save(Array)
+#10 C:\xampp\htdocs\semester5\petalokasiobjek\system\CodeIgniter.php(904): App\Controllers\Leafletdraw->simpan_point()
+#11 C:\xampp\htdocs\semester5\petalokasiobjek\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Leafletdraw))
+#12 C:\xampp\htdocs\semester5\petalokasiobjek\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 C:\xampp\htdocs\semester5\petalokasiobjek\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2022-11-09 22:04:53 --> pg_query(): Query failed: ERROR:  relation &quot;tbl_data_points&quot; does not exist
+LINE 1: INSERT INTO &quot;tbl_data_points&quot; (&quot;nama&quot;, &quot;geom&quot;) VALUES ('jogj...
+                    ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 140.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Query failed: ERROR:  relation &quot;tbl_data_points&quot; does not exist
+LINE 1: INSERT INTO &quot;tbl_data_points&quot; (&quot;nama&quot;, &quot;geom&quot;) VALUES (\'jogj...
+                    ^', 'SYSTEMPATH\\Database\\Postgre\\Connection.php', 140)
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(140): pg_query(Object(PgSql\Connection), 'INSERT INTO "tbl_data_points" ("nama", "geom") VALUES (\'jogja\', \'POINT (110.069447 -7.698893)\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\Postgre\Connection->execute('INSERT INTO "tbl_data_points" ("nama", "geom") VALUES (\'jogja\', \'POINT (110.069447 -7.698893)\')')
+ 4 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO "tbl_data_points" ("nama", "geom") VALUES (\'jogja\', \'POINT (110.069447 -7.698893)\')')
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO "tbl_data_points" ("nama", "geom") VALUES (:nama:, :geom:)', [...], false)
+ 6 SYSTEMPATH\Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+ 7 SYSTEMPATH\BaseModel.php(738): CodeIgniter\Model->doInsert([...])
+ 8 SYSTEMPATH\Model.php(667): CodeIgniter\BaseModel->insert([...], false)
+ 9 SYSTEMPATH\BaseModel.php(658): CodeIgniter\Model->insert([...], false)
+10 APPPATH\Controllers\Leafletdraw.php(33): CodeIgniter\BaseModel->save([...])
+11 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Leafletdraw->simpan_point()
+12 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Leafletdraw))
+13 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-11-09 22:06:17 --> ErrorException: pg_query(): Query failed: ERROR:  relation &quot;tbl_data_points&quot; does not exist
+LINE 1: INSERT INTO &quot;tbl_data_points&quot; (&quot;nama&quot;, &quot;geom&quot;) VALUES ('dcc'...
+                    ^ in C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\Postgre\Connection.php:140
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Que...', 'C:\\xampp\\htdocs...', 140)
+#1 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\Postgre\Connection.php(140): pg_query(Object(PgSql\Connection), 'INSERT INTO "tb...')
+#2 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\BaseConnection.php(693): CodeIgniter\Database\Postgre\Connection->execute('INSERT INTO "tb...')
+#3 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO "tb...')
+#4 C:\xampp\htdocs\semester5\petalokasiobjek\system\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO "tb...', Array, false)
+#5 C:\xampp\htdocs\semester5\petalokasiobjek\system\Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+#6 C:\xampp\htdocs\semester5\petalokasiobjek\system\BaseModel.php(738): CodeIgniter\Model->doInsert(Array)
+#7 C:\xampp\htdocs\semester5\petalokasiobjek\system\Model.php(667): CodeIgniter\BaseModel->insert(Array, false)
+#8 C:\xampp\htdocs\semester5\petalokasiobjek\system\BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#9 C:\xampp\htdocs\semester5\petalokasiobjek\app\Controllers\Leafletdraw.php(35): CodeIgniter\BaseModel->save(Array)
+#10 C:\xampp\htdocs\semester5\petalokasiobjek\system\CodeIgniter.php(904): App\Controllers\Leafletdraw->simpan_point()
+#11 C:\xampp\htdocs\semester5\petalokasiobjek\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Leafletdraw))
+#12 C:\xampp\htdocs\semester5\petalokasiobjek\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 C:\xampp\htdocs\semester5\petalokasiobjek\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2022-11-09 22:06:17 --> pg_query(): Query failed: ERROR:  relation &quot;tbl_data_points&quot; does not exist
+LINE 1: INSERT INTO &quot;tbl_data_points&quot; (&quot;nama&quot;, &quot;geom&quot;) VALUES ('dcc'...
+                    ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 140.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Query failed: ERROR:  relation &quot;tbl_data_points&quot; does not exist
+LINE 1: INSERT INTO &quot;tbl_data_points&quot; (&quot;nama&quot;, &quot;geom&quot;) VALUES (\'dcc\'...
+                    ^', 'SYSTEMPATH\\Database\\Postgre\\Connection.php', 140)
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(140): pg_query(Object(PgSql\Connection), 'INSERT INTO "tbl_data_points" ("nama", "geom") VALUES (\'dcc\', \'POINT (110.267255 -7.798289)\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\Postgre\Connection->execute('INSERT INTO "tbl_data_points" ("nama", "geom") VALUES (\'dcc\', \'POINT (110.267255 -7.798289)\')')
+ 4 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO "tbl_data_points" ("nama", "geom") VALUES (\'dcc\', \'POINT (110.267255 -7.798289)\')')
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO "tbl_data_points" ("nama", "geom") VALUES (:nama:, :geom:)', [...], false)
+ 6 SYSTEMPATH\Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+ 7 SYSTEMPATH\BaseModel.php(738): CodeIgniter\Model->doInsert([...])
+ 8 SYSTEMPATH\Model.php(667): CodeIgniter\BaseModel->insert([...], false)
+ 9 SYSTEMPATH\BaseModel.php(658): CodeIgniter\Model->insert([...], false)
+10 APPPATH\Controllers\Leafletdraw.php(35): CodeIgniter\BaseModel->save([...])
+11 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Leafletdraw->simpan_point()
+12 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Leafletdraw))
+13 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

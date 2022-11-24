@@ -11,7 +11,7 @@ use Faker\Provider\Base;
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Peta Lokasi Objek</title>
+    <title>Leaflet Draw Editing</title>
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css" />
@@ -117,103 +117,6 @@ use Faker\Provider\Base;
             </div>
         </div>
     </div>
-
-    <!-- Modal Point -->
-    <div class="modal fade" id="pointModal" tabindex="-1" aria-labelledby="pointModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="pointModalLabel"><i class="fas fa-info-circle"></i> Point</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="<?= base_url('leafletdraw/simpan_point') ?>" method="POST">
-                        <?= csrf_field() ?>
-
-                        <label for="input_point_name">Nama</label>
-                        <input type="text" class="form-control" id="input_point_name" name="input_point_name">
-
-                        <label for="input_point_geometry">Geometry</label>
-                        <textarea class="form-control" id="input_point_geometry" name="input_point_geometry" rows="2"></textarea>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary" id="btn_save_point">Simpan</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Polyline -->
-    <div class="modal fade" id="polylineModal" tabindex="-1" aria-labelledby="polylineModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="polylineModalLabel"><i class="fas fa-info-circle"></i> Polyline</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="<?= base_url('leafletdraw/simpan_polyline') ?>" method="POST">
-                        <?= csrf_field() ?>
-
-                        <label for="input_polyline_name">Nama</label>
-                        <input type="text" class="form-control" id="input_polyline_name" name="input_polyline_name">
-
-                        <label for="input_polyline_geometry">Geometry</label>
-                        <textarea class="form-control" id="input_polyline_geometry" name="input_polyline_geometry" rows="2"></textarea>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary" id="btn_save_polyline">Simpan</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Polygon -->
-    <div class="modal fade" id="polygonModal" tabindex="-1" aria-labelledby="polygonModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="polygonModalLabel"><i class="fas fa-info-circle"></i> Polygon</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="<?= base_url('leafletdraw/simpan_polygon') ?>" method="POST">
-                        <?= csrf_field() ?>
-
-                        <label for="input_polygon_name">Nama</label>
-                        <input type="text" class="form-control" id="input_polygon_name" name="input_polygon_name">
-
-                        <label for="input_polygon_geometry">Geometry</label>
-                        <textarea class="form-control" id="input_polygon_geometry" name="input_polygon_geometry" rows="2"></textarea>
-
-                        <label for="input_polygon_color">Warna</label>
-                        <select name="input_polygon_color" id="input_polygon_color" class="form-control">
-                            <option value="red">Merah</option>
-                            <option value="blue">Biru</option>
-                            <option value="green">Hijau</option>
-                            <option value="yellow">Kuning</option>
-                            <option value="orange">Orange</option>
-                            <option value="purple">Ungu</option>
-                            <option value="pink">Pink</option>
-                            <option value="black">Hitam</option>
-                            <option value="white">Putih</option>
-                        </select>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary" id="btn_save_polygon">Simpan</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 </body>
 
 <script>
@@ -239,59 +142,6 @@ use Faker\Provider\Base;
     });
     basemap4.addTo(map);
 
-    // Draw items
-    var drawnItems = new L.FeatureGroup();
-    map.addLayer(drawnItems);
-    console.log(drawnItems);
-
-    // Draw Control
-    var drawControl = new L.Control.Draw({
-        draw: {
-            polygon: true,
-            marker: true,
-            polyline: true,
-            circle: false,
-            circlemarker: false,
-            rectangle: false,
-        },
-    });
-
-    map.addControl(drawControl);
-
-    /* Draw Event */
-    map.on(L.Draw.Event.CREATED, function(e) {
-        var type = e.layerType,
-            layer = e.layer;
-
-        // Convert geometry to GeoJSON
-        var drawnItemJSON = layer.toGeoJSON().geometry;
-
-        // Convert GeoJSON to WKT
-        var drawnItemWKT = Terraformer.WKT.convert(drawnItemJSON);
-
-        if (type === 'marker') {
-            // Set value to input
-            $('#input_point_geometry').html(drawnItemWKT);
-
-            // Open Modal
-            $('#pointModal').modal('show');
-        } else if (type === 'polyline') {
-            // Set value to input
-            $('#input_polyline_geometry').html(drawnItemWKT);
-
-            // Open Modal
-            $('#polylineModal').modal('show');
-        } else if (type === 'polygon') {
-            // Set value to input
-            $('#input_polygon_geometry').html(drawnItemWKT);
-
-            // Open Modal
-            $('#polygonModal').modal('show');
-        }
-
-        map.addLayer(layer);
-    });
-
     //GeoJSON Point
     var point = L.geoJson(null, {
         onEachFeature: function(feature, layer) {
@@ -299,7 +149,29 @@ use Faker\Provider\Base;
                 "Deskripsi: " + feature.properties.deskripsi;
             layer.on({
                 click: function(e) {
-                    point.bindPopup(popupContent);
+                    var confirm = window.confirm("Yakin mau menghapus " + feature.properties.nama + "?");
+
+                    //Hapus Point
+                    if (confirm) {
+                        var id = feature.properties.id;
+                        //hapus point dengan AJAX
+                        $.ajax({
+                            url: "<?= base_url('leafletdraw/hapusdatapoint') ?>",
+                            type: "POST",
+                            data: {
+                                "id": id,
+                                "<?= csrf_token() ?>": "<?= csrf_hash() ?>"
+                            },
+                            success: function(data) {
+                                // redirect
+                                window.location.href = "<?= base_url('leafletdraw/delete') ?>";
+                                console.log("Data berhasil dihapus");
+                            },
+                            error: function(data) {
+                                console.log("Data gagal dihapus");
+                            }
+                        });
+                    }
                 },
                 mouseover: function(e) {
                     point.bindTooltip(feature.properties.nama);
@@ -327,7 +199,29 @@ use Faker\Provider\Base;
                 "Panjang: " + feature.properties.panjang_km + " km";
             layer.on({
                 click: function(e) {
-                    line.bindPopup(popupContent);
+                    var confirm = window.confirm("Yakin mau menghapus " + feature.properties.nama + "?");
+
+                    //Hapus Polyline
+                    if (confirm) {
+                        var id = feature.properties.id;
+                        //hapus polyline dengan AJAX
+                        $.ajax({
+                            url: "<?= base_url('leafletdraw/hapusdatapolyline') ?>",
+                            type: "POST",
+                            data: {
+                                "id": id,
+                                "<?= csrf_token() ?>": "<?= csrf_hash() ?>"
+                            },
+                            success: function(data) {
+                                // redirect
+                                window.location.href = "<?= base_url('leafletdraw/delete') ?>";
+                                console.log("Data berhasil dihapus");
+                            },
+                            error: function(data) {
+                                console.log("Data gagal dihapus");
+                            }
+                        });
+                    }
                 },
                 mouseover: function(e) {
                     line.bindTooltip(feature.properties.nama, {
@@ -360,7 +254,11 @@ use Faker\Provider\Base;
                 "Luas: " + feature.properties.luas_km2 + " km2";
             layer.on({
                 click: function(e) {
-                    polygon.bindPopup(popupContent);
+                    var idpolygon = feature.properties.id;
+
+                    //redirect ke halaman edit polygon
+                    window.location.href = "<?= base_url('leafletdraw/edit_polygon') ?>" + "/" + idpolygon;
+
                 },
                 mouseover: function(e) {
                     polygon.bindTooltip(feature.properties.nama, {

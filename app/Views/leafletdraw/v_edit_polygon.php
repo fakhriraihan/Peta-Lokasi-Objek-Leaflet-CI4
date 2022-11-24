@@ -118,92 +118,25 @@ use Faker\Provider\Base;
         </div>
     </div>
 
-    <!-- Modal Point -->
-    <div class="modal fade" id="pointModal" tabindex="-1" aria-labelledby="pointModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="pointModalLabel"><i class="fas fa-info-circle"></i> Point</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="<?= base_url('leafletdraw/simpan_point') ?>" method="POST">
-                        <?= csrf_field() ?>
-
-                        <label for="input_point_name">Nama</label>
-                        <input type="text" class="form-control" id="input_point_name" name="input_point_name">
-
-                        <label for="input_point_geometry">Geometry</label>
-                        <textarea class="form-control" id="input_point_geometry" name="input_point_geometry" rows="2"></textarea>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary" id="btn_save_point">Simpan</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Polyline -->
-    <div class="modal fade" id="polylineModal" tabindex="-1" aria-labelledby="polylineModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="polylineModalLabel"><i class="fas fa-info-circle"></i> Polyline</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="<?= base_url('leafletdraw/simpan_polyline') ?>" method="POST">
-                        <?= csrf_field() ?>
-
-                        <label for="input_polyline_name">Nama</label>
-                        <input type="text" class="form-control" id="input_polyline_name" name="input_polyline_name">
-
-                        <label for="input_polyline_geometry">Geometry</label>
-                        <textarea class="form-control" id="input_polyline_geometry" name="input_polyline_geometry" rows="2"></textarea>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary" id="btn_save_polyline">Simpan</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal Polygon -->
     <div class="modal fade" id="polygonModal" tabindex="-1" aria-labelledby="polygonModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="polygonModalLabel"><i class="fas fa-info-circle"></i> Polygon</h1>
+                    <h1 class="modal-title fs-5" id="polygonModalLabel"><i class="fas fa-edit"></i> Edit Polygon</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?= base_url('leafletdraw/simpan_polygon') ?>" method="POST">
+                    <form action="<?= base_url('leafletdraw/simpan_edit_data_polygon') ?>" method="POST">
                         <?= csrf_field() ?>
 
-                        <label for="input_polygon_name">Nama</label>
-                        <input type="text" class="form-control" id="input_polygon_name" name="input_polygon_name">
+                        <input type="hidden" name="id_polygon" id="id_polygon">
 
-                        <label for="input_polygon_geometry">Geometry</label>
-                        <textarea class="form-control" id="input_polygon_geometry" name="input_polygon_geometry" rows="2"></textarea>
+                        <label for="edit_polygon_name">Nama</label>
+                        <input type="text" class="form-control" id="edit_polygon_name" name="edit_polygon_name">
 
-                        <label for="input_polygon_color">Warna</label>
-                        <select name="input_polygon_color" id="input_polygon_color" class="form-control">
-                            <option value="red">Merah</option>
-                            <option value="blue">Biru</option>
-                            <option value="green">Hijau</option>
-                            <option value="yellow">Kuning</option>
-                            <option value="orange">Orange</option>
-                            <option value="purple">Ungu</option>
-                            <option value="pink">Pink</option>
-                            <option value="black">Hitam</option>
-                            <option value="white">Putih</option>
-                        </select>
+                        <label for="edit_polygon_deskripsi">Deskripsi</label>
+                        <textarea class="form-control" id="edit_polygon_deskripsi" name="edit_polygon_deskripsi" rows="3"></textarea>
 
                 </div>
                 <div class="modal-footer">
@@ -244,104 +177,6 @@ use Faker\Provider\Base;
     map.addLayer(drawnItems);
     console.log(drawnItems);
 
-    // Draw Control
-    var drawControl = new L.Control.Draw({
-        draw: {
-            polygon: true,
-            marker: true,
-            polyline: true,
-            circle: false,
-            circlemarker: false,
-            rectangle: false,
-        },
-    });
-
-    map.addControl(drawControl);
-
-    /* Draw Event */
-    map.on(L.Draw.Event.CREATED, function(e) {
-        var type = e.layerType,
-            layer = e.layer;
-
-        // Convert geometry to GeoJSON
-        var drawnItemJSON = layer.toGeoJSON().geometry;
-
-        // Convert GeoJSON to WKT
-        var drawnItemWKT = Terraformer.WKT.convert(drawnItemJSON);
-
-        if (type === 'marker') {
-            // Set value to input
-            $('#input_point_geometry').html(drawnItemWKT);
-
-            // Open Modal
-            $('#pointModal').modal('show');
-        } else if (type === 'polyline') {
-            // Set value to input
-            $('#input_polyline_geometry').html(drawnItemWKT);
-
-            // Open Modal
-            $('#polylineModal').modal('show');
-        } else if (type === 'polygon') {
-            // Set value to input
-            $('#input_polygon_geometry').html(drawnItemWKT);
-
-            // Open Modal
-            $('#polygonModal').modal('show');
-        }
-
-        map.addLayer(layer);
-    });
-
-    //GeoJSON Point
-    var point = L.geoJson(null, {
-        onEachFeature: function(feature, layer) {
-            var popupContent = "Nama: " + feature.properties.nama + "<br>" +
-                "Deskripsi: " + feature.properties.deskripsi;
-            layer.on({
-                click: function(e) {
-                    point.bindPopup(popupContent);
-                },
-                mouseover: function(e) {
-                    point.bindTooltip(feature.properties.nama);
-                },
-            });
-        },
-    });
-    $.getJSON("<?= base_url('api/point') ?>", function(data) {
-        point.addData(data);
-        map.addLayer(point);
-    });
-
-    //GeoJSON Polyline
-    var line = L.geoJson(null, {
-        /* Style polyline */
-        style: function(feature) {
-            return {
-                color: "#3388ff",
-                weight: 3,
-                opacity: 1,
-            };
-        },
-        onEachFeature: function(feature, layer) {
-            var popupContent = "Nama: " + feature.properties.nama + "<br>" +
-                "Panjang: " + feature.properties.panjang_km + " km";
-            layer.on({
-                click: function(e) {
-                    line.bindPopup(popupContent);
-                },
-                mouseover: function(e) {
-                    line.bindTooltip(feature.properties.nama, {
-                        sticky: true,
-                    });
-                },
-            });
-        },
-    });
-    $.getJSON("<?= base_url('api/polyline') ?>", function(data) {
-        line.addData(data);
-        map.addLayer(line);
-    });
-
     //GeoJSOn Polygon
     var polygon = L.geoJson(null, {
         /* Style polygon */
@@ -355,12 +190,14 @@ use Faker\Provider\Base;
             };
         },
         onEachFeature: function(feature, layer) {
-            var popupContent = "Nama: " + feature.properties.nama + "<br>" +
-                "Deskripsi: " + feature.properties.deskripsi + "<br>" +
-                "Luas: " + feature.properties.luas_km2 + " km2";
+
             layer.on({
                 click: function(e) {
-                    polygon.bindPopup(popupContent);
+                    // Open Modal
+                    $('#id_polygon').val(feature.properties.id);
+                    $('#edit_polygon_name').val(feature.properties.nama);
+                    $('#edit_polygon_deskripsi').val(feature.properties.deskripsi);
+                    $('#polygonModal').modal('show');
                 },
                 mouseover: function(e) {
                     polygon.bindTooltip(feature.properties.nama, {
@@ -370,9 +207,72 @@ use Faker\Provider\Base;
             });
         },
     });
-    $.getJSON("<?= base_url('api/polygon') ?>", function(data) {
+    $.getJSON("<?= base_url('api/one_polygon') . "/" . $idpolygon ?>", function(data) {
         polygon.addData(data);
         map.addLayer(polygon);
+        map.fitBounds(polygon.getBounds());
+    });
+
+    // Draw Control
+    var drawControl = new L.Control.Draw({
+        draw: {
+            polygon: false,
+            marker: false,
+            polyline: false,
+            circle: false,
+            circlemarker: false,
+            rectangle: false,
+        },
+        edit: {
+            featureGroup: polygon,
+            edit: true,
+            remove: false,
+        },
+    });
+
+    map.addControl(drawControl);
+
+    /* Draw Event */
+    map.on(L.Draw.Event.EDITED, function(e) {
+        var type = e.layerType;
+        var layers = e.layers;
+
+        layers.eachLayer(function(layer) {
+
+            // Convert geometry to GeoJSON
+            var drawnItemJSON = layer.toGeoJSON().geometry;
+
+            // Convert GeoJSON to WKT
+            var drawnItemWKT = Terraformer.WKT.convert(drawnItemJSON);
+
+            console.log(drawnItemWKT);
+
+            map.addLayer(layer);
+
+            var confirm = window.confirm("Apakah anda yakin ingin mengubah polygon ini?");
+
+            //edit Polygon
+            if (confirm) {
+                //edit polygon dengan AJAX
+                $.ajax({
+                    url: "<?= base_url('leafletdraw/simpan_edit_geom_polygon') ?>",
+                    type: "POST",
+                    data: {
+                        "id": <?= $idpolygon ?>,
+                        "geom": drawnItemWKT,
+                        "<?= csrf_token() ?>": "<?= csrf_hash() ?>"
+                    },
+                    success: function(data) {
+                        // redirect
+                        window.location.href = "<?= base_url('leafletdraw/edit') ?>";
+                        console.log("Data berhasil diubah");
+                    },
+                    error: function(data) {
+                        console.log("Data gagal diubah");
+                    }
+                });
+            }
+        });
     });
 
     /* Control Layer */

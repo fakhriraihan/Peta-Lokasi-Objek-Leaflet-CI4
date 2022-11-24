@@ -57,4 +57,63 @@ class Leafletdraw extends BaseController
         $this->TbldatapolygonModel->save($data);
         return redirect()->to(base_url('leafletdraw'));
     }
+
+    public function delete()
+    {
+        return view('leafletdraw/v_delete');
+    }
+
+    public function hapusdatapolygon()
+    {
+        $id = $this->request->getPost('id');
+        $this->TbldatapolygonModel->delete($id);
+    }
+
+    public function hapusdatapolyline()
+    {
+        $id = $this->request->getPost('id');
+        $this->TbldatapolylineModel->delete($id);
+    }
+
+    public function hapusdatapoint()
+    {
+        $id = $this->request->getPost('id');
+        $this->TbldatapointModel->delete($id);
+    }
+
+    public function edit()
+    {
+        return view('leafletdraw/v_edit');
+    }
+
+    public function edit_polygon($id)
+    {
+        $data = [
+            'idpolygon' => $id,
+        ];
+
+        return view('leafletdraw/v_edit_polygon', $data);
+    }
+
+    public function simpan_edit_geom_polygon()
+    {
+        $data = [
+            'id' => $this->request->getPost('id'),
+            'geom' => $this->request->getPost('geom'),
+        ];
+
+        $this->TbldatapolygonModel->save($data);
+    }
+
+    public function simpan_edit_data_polygon()
+    {
+        $data = [
+            'id' => $this->request->getPost('id_polygon'),
+            'nama' => $this->request->getPost('edit_polygon_name'),
+            'deskripsi' => $this->request->getPost('edit_polygon_deskripsi'),
+        ];
+
+        $this->TbldatapolygonModel->save($data);
+        return redirect()->to('leafletdraw/edit');
+    }
 }

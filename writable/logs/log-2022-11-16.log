@@ -1,0 +1,63 @@
+CRITICAL - 2022-11-16 20:04:23 --> Cannot use object of type PgSql\Connection as array
+in APPPATH\Controllers\Api.php on line 132.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Api->polygon()
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-16 20:04:27 --> Cannot use object of type PgSql\Connection as array
+in APPPATH\Controllers\Api.php on line 132.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Api->polygon()
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-16 20:06:56 --> Cannot use object of type PgSql\Connection as array
+in APPPATH\Controllers\Api.php on line 131.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Api->polygon()
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-16 20:06:58 --> Cannot use object of type PgSql\Connection as array
+in APPPATH\Controllers\Api.php on line 131.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Api->polygon()
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-16 20:07:17 --> Cannot use object of type PgSql\Connection as array
+in APPPATH\Controllers\Api.php on line 131.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Api->polygon()
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-16 20:07:40 --> Cannot use object of type PgSql\Connection as array
+in APPPATH\Controllers\Api.php on line 131.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Api->polygon()
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-16 20:07:55 --> Cannot use object of type PgSql\Connection as array
+in APPPATH\Controllers\Api.php on line 133.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Api->polygon()
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-16 21:00:01 --> Undefined array key "panjang_km"
+in APPPATH\Controllers\Api.php on line 138.
+ 1 APPPATH\Controllers\Api.php(138): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "panjang_km"', 'APPPATH\\Controllers\\Api.php', 138)
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Api->polyline()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-16 21:00:13 --> Undefined array key "panjang_km"
+in APPPATH\Controllers\Api.php on line 138.
+ 1 APPPATH\Controllers\Api.php(138): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "panjang_km"', 'APPPATH\\Controllers\\Api.php', 138)
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Api->polyline()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-16 21:00:14 --> Undefined array key "panjang_km"
+in APPPATH\Controllers\Api.php on line 138.
+ 1 APPPATH\Controllers\Api.php(138): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "panjang_km"', 'APPPATH\\Controllers\\Api.php', 138)
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Api->polyline()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

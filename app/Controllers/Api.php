@@ -114,4 +114,144 @@ class Api extends ResourceController
     {
         //
     }
+
+    //Leaflet Draw Point GeoJSON
+    public function point()
+    {
+        $db = db_connect();
+        $query = $db->query("SELECT id, nama, ST_AsGeoJSON(geom) AS geom, deskripsi, foto, created_at, updated_at FROM tbl_data_point WHERE deleted_at IS NULL");
+
+        $query_array = $query->getResultArray();
+
+        $feature = array();
+
+        foreach ($query_array as $q) {
+            $feature[] = [
+                'type' => 'Feature',
+                'geometry' => json_decode($q['geom']),
+                'properties' => [
+                    'id' => $q['id'],
+                    'nama' => $q['nama'],
+                    'deskripsi' => $q['deskripsi'],
+                    'foto' => $q['foto'],
+                    'created_at' => $q['created_at'],
+                    'updated_at' => $q['updated_at'],
+                ]
+            ];
+        }
+
+        $geojson = array(
+            'type' => 'FeatureCollection',
+            'features' => $feature
+        );
+
+        return $this->respond($geojson);
+    }
+
+    //leaflet Draw Polyline GeoJSON
+    public function polyline()
+    {
+        $db = db_connect();
+        $query = $db->query("SELECT id, nama, ST_AsGeoJSON(geom) AS geom, ST_Length(geom, true) AS panjang_m, deskripsi, foto, created_at, updated_at FROM tbl_data_polyline WHERE deleted_at IS NULL");
+
+        $query_array = $query->getResultArray();
+
+        $feature = array();
+
+        foreach ($query_array as $q) {
+            $feature[] = [
+                'type' => 'Feature',
+                'geometry' => json_decode($q['geom']),
+                'properties' => [
+                    'id' => $q['id'],
+                    'nama' => $q['nama'],
+                    'deskripsi' => $q['deskripsi'],
+                    'foto' => $q['foto'],
+                    'panjang_m' => $q['panjang_m'],
+                    'panjang_km' => $q['panjang_m'] / 1000,
+                    'created_at' => $q['created_at'],
+                    'updated_at' => $q['updated_at'],
+                ]
+            ];
+        }
+
+        $geojson = array(
+            'type' => 'FeatureCollection',
+            'features' => $feature
+        );
+
+        return $this->respond($geojson);
+    }
+
+    // Leaflet Draw Polygon GeoJSON
+    public function polygon()
+    {
+        $db = db_connect();
+        $query = $db->query("SELECT id, nama, ST_AsGeoJSON(geom) AS geom, ST_Area(geom, true) AS luas_m2, deskripsi, foto, created_at, updated_at FROM tbl_data_polygon WHERE deleted_at IS NULL");
+
+        $query_array = $query->getResultArray();
+
+        $feature = array();
+
+        foreach ($query_array as $q) {
+            $feature[] = [
+                'type' => 'Feature',
+                'geometry' => json_decode($q['geom']),
+                'properties' => [
+                    'id' => $q['id'],
+                    'nama' => $q['nama'],
+                    'deskripsi' => $q['deskripsi'],
+                    'foto' => $q['foto'],
+                    'luas_m2' => $q['luas_m2'],
+                    'luas_ha' => $q['luas_m2'] / 10000,
+                    'luas_km2' => $q['luas_m2'] / 1000000,
+                    'created_at' => $q['created_at'],
+                    'updated_at' => $q['updated_at'],
+                ]
+            ];
+        }
+
+        $geojson = array(
+            'type' => 'FeatureCollection',
+            'features' => $feature
+        );
+
+        return $this->respond($geojson);
+    }
+
+    // Leaflet Draw One Polygon GeoJSON
+    public function one_polygon($id)
+    {
+        $db = db_connect();
+        $query = $db->query("SELECT id, nama, ST_AsGeoJSON(geom) AS geom, ST_Area(geom, true) AS luas_m2, deskripsi, foto, created_at, updated_at FROM tbl_data_polygon WHERE deleted_at IS NULL AND id = $id");
+
+        $query_array = $query->getResultArray();
+
+        $feature = array();
+
+        foreach ($query_array as $q) {
+            $feature[] = [
+                'type' => 'Feature',
+                'geometry' => json_decode($q['geom']),
+                'properties' => [
+                    'id' => $q['id'],
+                    'nama' => $q['nama'],
+                    'deskripsi' => $q['deskripsi'],
+                    'foto' => $q['foto'],
+                    'luas_m2' => $q['luas_m2'],
+                    'luas_ha' => $q['luas_m2'] / 10000,
+                    'luas_km2' => $q['luas_m2'] / 1000000,
+                    'created_at' => $q['created_at'],
+                    'updated_at' => $q['updated_at'],
+                ]
+            ];
+        }
+
+        $geojson = array(
+            'type' => 'FeatureCollection',
+            'features' => $feature
+        );
+
+        return $this->respond($geojson);
+    }
 }
